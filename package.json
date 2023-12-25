@@ -6,6 +6,9 @@
   },
   "description": "A key-value store, helpful for caches in apps.",
   "main": "dist/index.js",
+  "repository": {
+    "url": "https://github.com/m1-dev/fastkv"
+  },
   "scripts": {
     "build": "tsup",
     "lint": "tsc --noEmit true"
