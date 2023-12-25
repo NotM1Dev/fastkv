@@ -11,7 +11,8 @@
   },
   "scripts": {
     "build": "tsup",
-    "lint": "tsc --noEmit true"
+    "lint": "tsc --noEmit true",
+    "prepublish": "pnpm run build"
   },
   "keywords": [
     "kv",
