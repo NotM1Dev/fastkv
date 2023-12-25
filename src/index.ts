@@ -1,4 +1,4 @@
-import fs from 'node:fs/promises';
+import fs from 'node:fs';
 import path from 'node:path';
 
 /**
@@ -20,31 +20,24 @@ export class KV<T = any> {
 
     if (location != '::memory::') {
       this.#location = path.resolve(process.cwd(), this.#location);
-
-      const setData = (data: Record<string, T>) => {
-        this.#data = data;
-      };
-
-      this.#load()
-        .then(setData)
-        .catch(() => ({}));
+      this.#data = this.#load();
     }
   }
 
-  async #load(): Promise<Record<string, T>> {
+  #load(): Record<string, T> {
     if (this.#location === '::memory::') return {};
 
     try {
-      const data = await fs.readFile(this.#location, 'utf8');
+      const data = fs.readFileSync(this.#location, 'utf8');
       return JSON.parse(data) || {};
     } catch {
       return {};
     }
   }
 
-  async #save(): Promise<void> {
+  #save(): void {
     if (this.#location !== '::memory::') {
-      await fs.writeFile(this.#location, JSON.stringify(this.#data), 'utf8');
+      fs.writeFileSync(this.#location, JSON.stringify(this.#data), 'utf8');
     }
   }
 
@@ -52,47 +45,41 @@ export class KV<T = any> {
    * Sets a value to a key.
    * @param key - The name of the key.
    * @param value - The value to store.
-   * @returns A promise returning the KV instance.
+   * @returns The value.
    */
-  public async set(key: string, value: T): Promise<this> {
-    try {
-      this.#data[key] = value;
-      await this.#save();
-      return this;
-    } catch (error) {
-      throw error;
-    }
+  public set(key: string, value: T): T {
+    this.#data[key] = value;
+    this.#save();
+
+    return value;
   }
 
   /**
    * Gets data by a key.
    * @param key - The existing key's name.
-   * @returns A promise returning the found key, or null.
+   * @returns The found data, or null.
    */
-  public async get(key: string): Promise<T | null> {
+  public get(key: string): T | null {
     return this.#data[key] ?? null;
   }
 
   /**
    * Gets all data in the store.
-   * @returns A promise returning an array of data.
+   * @returns An array of data.
    */
-  public async all(): Promise<T[]> {
+  public all(): T[] {
     return Object.values(this.#data);
   }
 
   /**
    * Clears all data in the store.
-   * @returns A promise returning the KV instance.
+   * @returns The KV instance.
    */
-  public async clear(): Promise<this> {
-    try {
-      this.#data = {};
-      await this.#save();
-      return this;
-    } catch (error) {
-      throw error;
-    }
+  public clear(): this {
+    this.#data = {};
+    this.#save();
+
+    return this;
   }
 }
 
