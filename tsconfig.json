@@ -1,0 +1,8 @@
+{
+  "extends": "@underctrl/tsconfig/cjs.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "outDir": "./dist"
+  },
+  "include": ["src"]
+}

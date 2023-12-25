@@ -1,0 +1,23 @@
+# node_modules
+node_modules
+
+# source
+src
+
+# lockfile
+pnpm-lock.yaml
+
+# typescript
+tsconfig.json
+tsup.config.ts
+
+# git
+.gitignore
+.git
+
+# miscellaneous
+**/*.env*
+**/.DS_Store
+
+# log
+**/*.log
