@@ -1,6 +1,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+type Entry<T> = {
+  key: string;
+  value: T;
+};
+
 /**
  * Represents a key-value store.
  * Initializing with `::memory::` uses in-memory storage.
@@ -18,7 +23,7 @@ export class KV<T = any> {
     this.#location = location;
     this.#data = {};
 
-    if (location != '::memory::') {
+    if (location !== '::memory::') {
       this.#location = path.resolve(process.cwd(), this.#location);
       this.#data = this.#load();
     }
@@ -59,16 +64,16 @@ export class KV<T = any> {
    * @param key - The existing key's name.
    * @returns The found data, or null.
    */
-  public get(key: string): T | null {
-    return this.#data[key] ?? null;
+  public get<U = T>(key: string): U | null {
+    return (this.#data[key] as unknown as U) ?? null;
   }
 
   /**
    * Gets all data in the store.
-   * @returns An array of data.
+   * @returns An array of Entry objects [{ key: string, value: T }].
    */
-  public all(): T[] {
-    return Object.values(this.#data);
+  public all(): Entry<T>[] {
+    return Object.entries(this.#data).map(([key, value]) => ({ key, value }));
   }
 
   /**

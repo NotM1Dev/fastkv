@@ -6,8 +6,9 @@
 
 FastKV is a key-value store which offers the following features:
 
-- Persistent storage in JSON files 📁
-- Caching with in-memory storage 🕒
+- Supports temporary in-memory storage 🕒
+- Supports persistent storage with JSON files 📁
+- Lightweight with no dependencies ⚡
 
 ## Installation
 
@@ -28,19 +29,20 @@ import { KV } from 'fastkv';
 
 // For TypeScript users, the KV supports generics:
 // const example = new KV<string>();
+// Or: example.get<string>('my-key-name');
 
 const kv = new KV('./db.json'); // Save the data. Path resolves with process.cwd()
 const cache = new KV('::memory::'); // Keep the data in the system's memory.
 
 // Set data
-await kv.set('userSettings', { theme: 'dark' }); // => Promise<KV>
+kv.set('userSettings', { theme: 'dark' }); // -> KV
 
 // Retreive data by a key
-await kv.get('userSettings'); // => Promise resolving to { theme: 'dark' }
+kv.get('userSettings'); // -> { theme: 'dark' }
 
 // Retreive all data
-await kv.all(); // => Promise resolving an array: [{ key: 'userSettings', value: { theme: 'dark' } }]
+kv.all(); // -> [{ key: 'userSettings', value: { theme: 'dark' } }]
 
 // Clear the store
-await kv.clear(); // => Promise<KV>
+kv.clear(); // -> KV
 ```
