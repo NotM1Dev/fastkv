@@ -35,7 +35,7 @@ const kv = new KV('./db.json'); // Save the data. Path resolves with process.cwd
 const cache = new KV('::memory::'); // Keep the data in the system's memory.
 
 // Set data
-kv.set('userSettings', { theme: 'dark' }); // -> KV
+kv.set('userSettings', { theme: 'dark' });
 
 // Retreive data by a key
 kv.get('userSettings'); // -> { theme: 'dark' }
@@ -44,5 +44,5 @@ kv.get('userSettings'); // -> { theme: 'dark' }
 kv.all(); // -> [{ key: 'userSettings', value: { theme: 'dark' } }]
 
 // Clear the store
-kv.clear(); // -> KV
+kv.clear();
 ```
