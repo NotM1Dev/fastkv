@@ -1,12 +1,13 @@
-# node_modules
+# Dependencies
 node_modules
 
-# build
+# Build output
 dist
 
-# miscellaneous
+# Logs
+**/logs
+**/*.log
+
+# Misc
 **/*.env*
 **/.DS_Store
-
-# log
-**/*.log

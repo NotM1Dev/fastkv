@@ -1,23 +1,25 @@
-# node_modules
+# Dependencies
 node_modules
 
-# source
+# Source
 src
 
-# lockfile
+# Kockfile
 pnpm-lock.yaml
 
-# typescript
+# TypeScript
 tsconfig.json
 tsup.config.ts
 
-# git
-.gitignore
+# Git
+.github
 .git
+.gitignore
 
-# miscellaneous
+# Logs
+**/logs
+**/*.log
+
+# Misc
 **/*.env*
 **/.DS_Store
-
-# log
-**/*.log
