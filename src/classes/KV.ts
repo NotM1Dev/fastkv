@@ -65,6 +65,16 @@ export class KV<T = any> {
     }
 
     /**
+     * Deletes data by a key.
+     * @param key - The existing key's name.
+     * @returns The KV instance.
+     */
+    public delete(key: string) {
+        delete this.#data[key];
+        return this;
+    }
+
+    /**
      * Gets all data in the store.
      * @returns An array of Entry objects [{ key: string, value: T }].
      */
