@@ -6,11 +6,8 @@ settings:
 
 devDependencies:
   '@types/node':
-    specifier: ^20.10.5
-    version: 20.10.5
-  '@underctrl/tsconfig':
-    specifier: ^0.0.1
-    version: 0.0.1
+    specifier: ^20.11.5
+    version: 20.11.5
   prettier:
     specifier: ^3.2.4
     version: 3.2.4
@@ -404,14 +401,10 @@ packages:
     dev: true
     optional: true
 
-  /@types/node@20.10.5:
-    resolution: {integrity: sha512-nNPsNE65wjMxEKI93yOP+NPGGBJz/PoN3kZsVLee0XMiJolxSekEVD8wRwBUBqkwc7UWop0edW50yrCQW4CyRw==}
+  /@types/node@20.11.5:
+    resolution: {integrity: sha512-g557vgQjUUfN76MZAN/dt1z3dzcUsimuysco0KeluHgrPdJXkP/XdAURgyO2W9fZWHRtRBiVKzKn8vyOAwlG+w==}
     dependencies:
       undici-types: 5.26.5
-    dev: true
-
-  /@underctrl/tsconfig@0.0.1:
-    resolution: {integrity: sha512-Do277d6KteSof18G/AkPCvi81YF2PYaFEREpo0Nx0Dmi0bqfZS4BM2ScP0cdge68/qSeY5ach6HS260uwFhLIQ==}
     dev: true
 
   /ansi-regex@5.0.1:
