@@ -1,29 +1,29 @@
 {
-  "name": "fastkv",
-  "version": "1.0.0",
-  "publishConfig": {
-    "access": "public"
-  },
-  "description": "A key-value store, helpful for caches in apps.",
-  "main": "dist/index.js",
-  "repository": {
-    "url": "https://github.com/m1-dev/fastkv"
-  },
-  "scripts": {
-    "build": "tsup",
-    "lint": "tsc --noEmit true",
-    "prepublish": "pnpm run build"
-  },
-  "keywords": [
-    "kv",
-    "database",
-    "json"
-  ],
-  "license": "MIT",
-  "devDependencies": {
-    "@types/node": "^20.10.5",
-    "@underctrl/tsconfig": "^0.0.1",
-    "tsup": "^8.0.1",
-    "typescript": "^5.3.3"
-  }
+    "name": "fastkv",
+    "version": "1.1.0",
+    "publishConfig": {
+        "access": "public"
+    },
+    "description": "A key-value store, helpful for caches in apps.",
+    "main": "dist/index.js",
+    "repository": {
+        "url": "https://github.com/m1-dev/fastkv"
+    },
+    "scripts": {
+        "build": "tsup",
+        "lint": "tsc --noEmit true",
+        "prepublish": "pnpm run build"
+    },
+    "keywords": [
+        "kv",
+        "database",
+        "json"
+    ],
+    "license": "MIT",
+    "devDependencies": {
+        "@types/node": "^20.10.5",
+        "@underctrl/tsconfig": "^0.0.1",
+        "tsup": "^8.0.1",
+        "typescript": "^5.3.3"
+    }
 }
