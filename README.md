@@ -6,9 +6,9 @@
 
 FastKV is a key-value store which offers the following features:
 
-- Supports temporary in-memory storage 🕒
-- Supports persistent storage with JSON files 📁
-- Lightweight with no dependencies ⚡
+-   Supports temporary in-memory storage 🕒
+-   Supports persistent storage with JSON files 📁
+-   Lightweight with no dependencies ⚡
 
 ## Installation
 

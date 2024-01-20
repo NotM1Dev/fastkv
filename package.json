@@ -11,18 +11,29 @@
     },
     "scripts": {
         "build": "tsup",
-        "lint": "tsc --noEmit true",
-        "prepublish": "pnpm run build"
+        "lint": "tsc --noEmit; prettier . --check --ignore-path=.prettierignore",
+        "prepublish": "pnpm run build",
+        "format": "prettier . --write --ignore-path=.prettierignore"
     },
     "keywords": [
         "kv",
         "database",
         "json"
     ],
+    "prettier": {
+        "tabWidth": 4,
+        "printWidth": 90,
+        "arrowParens": "always",
+        "trailingComma": "none",
+        "singleQuote": true,
+        "jsxSingleQuote": false,
+        "semi": true
+    },
     "license": "MIT",
     "devDependencies": {
         "@types/node": "^20.10.5",
         "@underctrl/tsconfig": "^0.0.1",
+        "prettier": "^3.2.4",
         "tsup": "^8.0.1",
         "typescript": "^5.3.3"
     }
