@@ -5,7 +5,9 @@
         "access": "public"
     },
     "description": "A key-value store, helpful for caches in apps.",
-    "main": "dist/index.js",
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
     "repository": {
         "url": "https://github.com/m1-dev/fastkv"
     },
