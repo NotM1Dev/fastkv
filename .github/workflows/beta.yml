@@ -1,15 +1,15 @@
-name: 🛠️ Canary Build
+name: 🛠️ beta Build
 
 on:
     push:
         branches:
-            - canary
+            - asdfghj
         paths:
             - '!docs'
 
 jobs:
     release:
-        name: Publish (Canary)
+        name: Publish (Beta)
         runs-on: ubuntu-latest
         steps:
             - uses: pnpm/action-setup@v2
@@ -37,29 +37,29 @@ jobs:
             - name: 🔢 Update Version
               run: |
                   node -e "try { const pkg = require('./package.json'); \
-                  const newVersion = pkg.version + '-canary.' + new Date().toISOString().replace(/[:\-T]/g, '').substr(0,14); \
+                  const newVersion = pkg.version + '-beta.' + new Date().toISOString().replace(/[:\-T]/g, '').substr(0,14); \
                   pkg.version = newVersion; \
                   require('fs').writeFileSync('./package.json', JSON.stringify(pkg, null, 2)); } catch (error) { console.error(error); }"
               env:
                   DEBIAN_FRONTEND: noninteractive
 
             - name: 🚚 Publish
-              run: pnpm run deploy:fastkv:canary
+              run: pnpm run deploy:fastkv:beta
               env:
                   NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
-            - name: 🚫 Deprecate Previous Canary Version
+            - name: 🚫 Deprecate Previous Beta Version
               run: |
                   PACKAGE_NAME=$(node -e "console.log(require('./package.json').name);")
                   ALL_VERSIONS=$(npm info $PACKAGE_NAME versions -json)
                   VERSION_TO_DEPRECATE=$(echo $ALL_VERSIONS | node -e "
                       const versions = JSON.parse(require('fs').readFileSync('/dev/stdin', 'utf-8'));
-                      const canaryVersions = versions.filter(v => v.includes('-canary.'));
-                      const versionToDeprecate = canaryVersions[canaryVersions.length - 2];
+                      const betaVersions = versions.filter(v => v.includes('-beta.'));
+                      const versionToDeprecate = betaVersions[betaVersions.length - 2];
                       console.log(versionToDeprecate);
                   ")
-                  echo Deprecating canary version: $VERSION_TO_DEPRECATE
-                  npm deprecate $PACKAGE_NAME@$VERSION_TO_DEPRECATE "unsupported canary version" || true
+                  echo Deprecating beta version: $VERSION_TO_DEPRECATE
+                  npm deprecate $PACKAGE_NAME@$VERSION_TO_DEPRECATE "unsupported beta version" || true
 
               env:
                   NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
