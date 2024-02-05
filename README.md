@@ -20,6 +20,8 @@ npm install fastkv
 yarn add fastkv
 # or
 pnpm add fastkv
+# or
+bun add fastkv
 ```
 
 ## Example
