@@ -4,7 +4,7 @@ node_modules
 # Source
 src
 
-# Kockfile
+# Lockfile
 pnpm-lock.yaml
 
 # TypeScript
