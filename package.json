@@ -16,8 +16,8 @@
         "lint": "tsc --noEmit; prettier . --check --ignore-path=.prettierignore",
         "prepublish": "pnpm run build",
         "format": "prettier . --write --ignore-path=.prettierignore",
-        "deploy:fastkv:stable": "pnpm publish --no-git-checks",
-        "deploy:fastkv:canary": "pnpm publish --no-git-checks --tag canary"
+        "deploy:fastkv:beta": "pnpm publish --no-git-checks --access public --tag beta",
+        "deploy:fastkv:stable": "pnpm publish --no-git-checks --access public"
     },
     "keywords": [
         "kv",
